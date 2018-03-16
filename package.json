@@ -14,6 +14,7 @@
     "start": "npm run dev",
     "test": "jest --no-cache",
     "test.watch": "jest --watch --no-cache"
+    "deploy": "firebase deploy"
   },
   "dependencies": {
     "@ionic/core": "0.0.2-65",

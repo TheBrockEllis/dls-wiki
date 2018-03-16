@@ -48,29 +48,29 @@ declare global {
 
 
 import {
-  AppProfile as AppProfile
-} from './components/app-profile/app-profile';
+  AppPage as AppPage
+} from './components/app-page/app-page';
 
 declare global {
-  interface HTMLAppProfileElement extends AppProfile, HTMLStencilElement {
+  interface HTMLAppPageElement extends AppPage, HTMLStencilElement {
   }
-  var HTMLAppProfileElement: {
-    prototype: HTMLAppProfileElement;
-    new (): HTMLAppProfileElement;
+  var HTMLAppPageElement: {
+    prototype: HTMLAppPageElement;
+    new (): HTMLAppPageElement;
   };
   interface HTMLElementTagNameMap {
-    "app-profile": HTMLAppProfileElement;
+    "app-page": HTMLAppPageElement;
   }
   interface ElementTagNameMap {
-    "app-profile": HTMLAppProfileElement;
+    "app-page": HTMLAppPageElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "app-profile": JSXElements.AppProfileAttributes;
+      "app-page": JSXElements.AppPageAttributes;
     }
   }
   namespace JSXElements {
-    export interface AppProfileAttributes extends HTMLAttributes {
+    export interface AppPageAttributes extends HTMLAttributes {
       match?: MatchResults;
     }
   }
