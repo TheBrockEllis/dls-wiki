@@ -1,24 +1,41 @@
-import { Component, State } from '@stencil/core';
-
+import { Component, Prop, State } from '@stencil/core';
+import { RouterHistory } from '@stencil/router';
 
 @Component({
   tag: 'app-home',
   styleUrl: 'app-home.scss'
 })
 export class AppHome {
-  @State() pages: any[] = [];
+  @Prop() history: RouterHistory;
+
+  /* We can load any 'static' pages here, before we load pages from Wordpress */
+  @State() pages: any[] = [
+    {
+      title: 'Daily Show Log',
+      link: '/showlog'
+    },
+    {
+      title: 'Twitter Polls',
+      link: '/twitter'
+    },
+  ];
 
   componentDidLoad(){
     this.getPages();
   }
 
   getPages(){
-    fetch('http://www.sharproot.com/wp-json/wp/v2/pages')
+    fetch('https://admin.dlswiki.com/wp-json/wp/v2/pages')
     .then(function(response) {
       return response.json();
     })
     .then( pages => {
-      this.pages = [...this.pages, ...pages];;
+      pages.map( page => {
+        page.title = page.title.rendered;
+        page.link = `/page/${page.slug}`;
+      });
+
+      this.pages = [...this.pages, ...pages];
     });
   }
 
@@ -33,23 +50,17 @@ export class AppHome {
         </ion-header>
 
         <ion-content>
-
-          { console.log(this.pages) }
+          <ion-list>
 
           {
-            this.pages.map( (page) => {
-              console.log("This is a page", page);
+            this.pages.map( page => {
               return (
-                <stencil-route-link url={page.slug}>
-                  <ion-button>
-                    { page.title.rendered }
-                  </ion-button>
-                </stencil-route-link>
+                <dls-button page={page} history={this.history}></dls-button>
               )
             })
           }
 
-
+          </ion-list>
         </ion-content>
       </ion-page>
     );

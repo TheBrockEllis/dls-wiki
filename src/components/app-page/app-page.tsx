@@ -1,6 +1,5 @@
-import { Component, Prop } from '@stencil/core';
-import { MatchResults } from '@stencil/router';
-import { ToastController } from '@ionic/core';
+import { Component, Prop, State } from '@stencil/core';
+import { MatchResults, RouterHistory } from '@stencil/router';
 
 @Component({
   tag: 'app-page',
@@ -9,24 +8,36 @@ import { ToastController } from '@ionic/core';
 export class AppPage {
 
   @Prop() match: MatchResults;
-  @Prop({ connect: 'ion-toast-controller' }) toastCtrl: ToastController;
+  @Prop() history: RouterHistory;
 
-  //@State() notify: boolean;
-  //@State() swSupport: boolean;
+  @State() page: any;
+
+  componentDidLoad(){
+    this.getPage();
+  }
+
+  getPage(){
+    fetch(`https://admin.dlswiki.com/wp-json/wp/v2/pages/${this.history.location.state.id}`)
+    .then(function(response) {
+      return response.json();
+    })
+    .then( page => {
+      console.log(page);
+      this.page = {...this.page, ...page};
+    });
+  }
 
   render() {
     return (
       <ion-page>
         <ion-header>
-          <ion-toolbar color='primary'>
-            <ion-title>Ionic PWA Toolkit</ion-title>
+          <ion-toolbar color='dark'>
+            <ion-title>{this.history.location.state.title}</ion-title>
           </ion-toolbar>
         </ion-header>
 
         <ion-content>
-          <p>
-            Hello! You're trying to view the {this.match.params.slug} page.
-          </p>
+          <div innerHTML={this.page ? this.page.content.rendered : ''}></div>
         </ion-content>
       </ion-page>
     );

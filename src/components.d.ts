@@ -6,6 +6,7 @@
 
 import {
   MatchResults,
+  RouterHistory,
 } from '@stencil/router';
 
 declare global {
@@ -41,7 +42,7 @@ declare global {
   }
   namespace JSXElements {
     export interface AppHomeAttributes extends HTMLAttributes {
-      
+      history?: RouterHistory;
     }
   }
 }
@@ -71,7 +72,39 @@ declare global {
   }
   namespace JSXElements {
     export interface AppPageAttributes extends HTMLAttributes {
+      history?: RouterHistory;
       match?: MatchResults;
+    }
+  }
+}
+
+
+import {
+  DLSButton as DlsButton
+} from './components/dls-button/dls-button';
+
+declare global {
+  interface HTMLDlsButtonElement extends DlsButton, HTMLStencilElement {
+  }
+  var HTMLDlsButtonElement: {
+    prototype: HTMLDlsButtonElement;
+    new (): HTMLDlsButtonElement;
+  };
+  interface HTMLElementTagNameMap {
+    "dls-button": HTMLDlsButtonElement;
+  }
+  interface ElementTagNameMap {
+    "dls-button": HTMLDlsButtonElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "dls-button": JSXElements.DlsButtonAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface DlsButtonAttributes extends HTMLAttributes {
+      history?: RouterHistory;
+      page?: any;
     }
   }
 }
