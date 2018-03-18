@@ -6,6 +6,10 @@ project (usually <html>) so that the variable can be used across your app. */
   --ion-color-ios-primary: #1BA2DC;
   --ion-color-ios-secondary: #EB433C;
   --ion-color-ios-light: #EDE035;
+
+  --ion-color-md-primary: var(--ion-color-ios-primary);
+  --ion-color-md-secondary: var(--ion-color-ios-secondary);
+  --ion-color-md-light: var(--ion-color-ios-light);
 }
 
 @font-face {
