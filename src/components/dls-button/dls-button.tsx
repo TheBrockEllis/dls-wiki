@@ -20,8 +20,11 @@ export class DLSButton {
 
   render() {
     return (
-      <ion-item tappable innerHTML={this.page.title} onClick={this.handleClick.bind(this)}>
-      </ion-item>
+      <div class='dls-button-box' innerHTML={this.page.title} onClick={this.handleClick.bind(this)}>
+      </div>
+
+      // <ion-item tappable innerHTML={this.page.title} onClick={this.handleClick.bind(this)}>
+      // </ion-item>
     );
   }
 }

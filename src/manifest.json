@@ -1,6 +1,6 @@
 {
-  "name": "Ionic PWA Toolkit",
-  "short_name": "Ionic PWA",
+  "name": "Dan LeBatard Show Wiki",
+  "short_name": "Dan LeBatard Show Wiki",
   "start_url": "/",
   "display": "standalone",
   "icons": [{
@@ -8,6 +8,6 @@
     "sizes": "512x512",
     "type": "image/png"
   }],
-  "background_color": "#488aff",
-  "theme_color": "#488aff"
+  "background_color": "#1CA3D8",
+  "theme_color": "#1CA3D8"
 }

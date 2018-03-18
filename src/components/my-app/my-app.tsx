@@ -46,6 +46,9 @@ export class MyApp {
             <stencil-route url='/' component='app-home' exact={true}>
             </stencil-route>
 
+            <stencil-route url='/twitter' component='dls-twitter'>
+            </stencil-route>
+
             <stencil-route url='/page/:slug' component='app-page'>
             </stencil-route>
           </stencil-router>

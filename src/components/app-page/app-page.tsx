@@ -27,12 +27,22 @@ export class AppPage {
     });
   }
 
+  goBack(){
+    this.history.goBack();
+  }
+
   render() {
     return (
       <ion-page>
         <ion-header>
           <ion-toolbar color='dark'>
-            <ion-title>{this.history.location.state.title}</ion-title>
+            <ion-buttons>
+              <ion-button icon-only onClick={this.goBack.bind(this)}>
+                Back
+              </ion-button>
+            </ion-buttons>
+
+            <ion-title innerHTML={this.history.location.state.title}></ion-title>
           </ion-toolbar>
         </ion-header>
 

@@ -1,4 +1,18 @@
 /* Document Level Styles */
+
+/* the root pseduo selector defines the variable on the root element of your
+project (usually <html>) so that the variable can be used across your app. */
+:root {
+  --ion-color-ios-primary: #1BA2DC;
+  --ion-color-ios-secondary: #EB433C;
+  --ion-color-ios-light: #EDE035;
+}
+
+@font-face {
+  font-family: 'suckgolf';
+  src: url('/assets/fonts/suckgolf.ttf');
+}
+
 body {
   margin: 0px;
   padding: 0px;

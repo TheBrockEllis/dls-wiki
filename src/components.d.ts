@@ -111,6 +111,36 @@ declare global {
 
 
 import {
+  DLSTwitter as DlsTwitter
+} from './components/dls-twitter/dls-twitter';
+
+declare global {
+  interface HTMLDlsTwitterElement extends DlsTwitter, HTMLStencilElement {
+  }
+  var HTMLDlsTwitterElement: {
+    prototype: HTMLDlsTwitterElement;
+    new (): HTMLDlsTwitterElement;
+  };
+  interface HTMLElementTagNameMap {
+    "dls-twitter": HTMLDlsTwitterElement;
+  }
+  interface ElementTagNameMap {
+    "dls-twitter": HTMLDlsTwitterElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "dls-twitter": JSXElements.DlsTwitterAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface DlsTwitterAttributes extends HTMLAttributes {
+      history?: RouterHistory;
+    }
+  }
+}
+
+
+import {
   LazyImg as LazyImg
 } from './components/lazy-img/lazy-img';
 
