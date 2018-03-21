@@ -9,6 +9,7 @@ export class AppHome {
 
   @State() heads: any;
 
+  @Prop({ context: 'isServer' }) private isServer: boolean;
   @Prop() history: RouterHistory;
   @State() availableAnimations: string[] = ['tada', 'bounce', 'pulse', 'rubberBand', 'shake', 'jello'];
 
@@ -25,7 +26,9 @@ export class AppHome {
   ];
 
   componentDidLoad(){
-    this.getPages();
+    if(this.isServer === false){
+      this.getPages();
+    }
 
     this.setupAnimations();
   }
