@@ -35,13 +35,14 @@ export class AppHome {
     .then(function(response) {
       return response.json();
     })
-    .then( pages => {
-      pages.map( page => {
+    .then( (pages) => {
+      pages.map( (page) => {
         page.title = page.title.rendered;
         page.link = `/page/${page.slug}`;
       });
 
       this.pages = [...this.pages, ...pages];
+      console.log("done fetchin' and mergin' pages", this.pages);
     });
   }
 
@@ -84,10 +85,9 @@ export class AppHome {
           </div>
 
           {
-            this.pages.map( page => {
-              return (
-                <dls-button page={page} history={this.history}></dls-button>
-              )
+            this.pages.map( (page) => {
+              console.log("page", page);
+              return <dls-button page={page} history={this.history}></dls-button>
             })
           }
 
