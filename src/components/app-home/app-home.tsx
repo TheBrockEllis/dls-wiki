@@ -23,6 +23,10 @@ export class AppHome {
       title: 'Twitter Polls',
       link: '/twitter'
     },
+    {
+      title: 'Soundboard',
+      link: '/soundboard'
+    },
   ];
 
   componentDidLoad(){

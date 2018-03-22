@@ -111,6 +111,36 @@ declare global {
 
 
 import {
+  DLSSoundboard as DlsSoundboard
+} from './components/dls-soundboard/dls-soundboard';
+
+declare global {
+  interface HTMLDlsSoundboardElement extends DlsSoundboard, HTMLStencilElement {
+  }
+  var HTMLDlsSoundboardElement: {
+    prototype: HTMLDlsSoundboardElement;
+    new (): HTMLDlsSoundboardElement;
+  };
+  interface HTMLElementTagNameMap {
+    "dls-soundboard": HTMLDlsSoundboardElement;
+  }
+  interface ElementTagNameMap {
+    "dls-soundboard": HTMLDlsSoundboardElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "dls-soundboard": JSXElements.DlsSoundboardAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface DlsSoundboardAttributes extends HTMLAttributes {
+      history?: RouterHistory;
+    }
+  }
+}
+
+
+import {
   DLSTwitter as DlsTwitter
 } from './components/dls-twitter/dls-twitter';
 

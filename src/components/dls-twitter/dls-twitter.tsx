@@ -3,7 +3,7 @@ import { RouterHistory } from '@stencil/router';
 
 @Component({
   tag: 'dls-twitter',
-  styleUrl: 'dls-twitter.scss'
+  styleUrl: 'dls-twitter.css'
 })
 export class DLSTwitter {
 
