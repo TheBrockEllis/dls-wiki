@@ -40,7 +40,10 @@ export class AppHome {
     this.mixpanel.init();
     this.mixpanel.track("Home");
 
-    if(this.isServer === false) this.getPages();
+    if(this.isServer === false) {
+      this.getPages();
+    }
+
     this.setupAnimations();
   }
 
@@ -50,14 +53,18 @@ export class AppHome {
         return response.json();
       })
       .then( (pages) => {
-        this.dynamicPages = pages.map( (page) => {
+        pages = pages.map( (page) => {
           page.title = page.title.rendered;
           page.link = `/page/${page.slug}`;
           return page;
         });
 
+        return pages;
         // this.dynamicPages = [...this.dynamicPages, ...pages]
         // console.log("done fetchin' and mergin' pages", this.pages);
+      }).then( (pages) => {
+        this.dynamicPages = [...this.dynamicPages, ...pages]
+        console.log("done fetchin' and mergin' pages", this.dynamicPages);
       });
   }
 
