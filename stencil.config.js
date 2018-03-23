@@ -6,7 +6,6 @@ exports.config = {
   },
   globalStyle: ['src/global/app.css'],
   globalScript: 'src/global/index.ts',
-  enableCache: true,
   plugins: [
     sass()
   ],

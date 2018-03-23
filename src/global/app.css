@@ -22,3 +22,7 @@ body {
   padding: 0px;
   font-family: sans-serif;
 }
+
+ion-scroll {
+  padding: 15px;
+}

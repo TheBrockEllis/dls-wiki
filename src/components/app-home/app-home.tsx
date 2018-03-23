@@ -17,6 +17,7 @@ export class AppHome {
   @State() availableAnimations: string[] = ['tada', 'bounce', 'pulse', 'rubberBand', 'shake', 'jello'];
 
   /* We can load any 'static' pages here, before we load pages from Wordpress */
+  @State() dynamicPages: any[] = [];
   @State() staticPages: any[] = [
     {
       title: 'Soundboard',
@@ -32,10 +33,8 @@ export class AppHome {
     },
   ];
 
-  @State() dynamicPages: any[] = [];
 
   componentDidLoad(){
-    // console.log(this.mixpanel);
     console.log('Is server: ', this.isServer);
 
     this.mixpanel.init();
@@ -110,12 +109,10 @@ export class AppHome {
           <img id='long-banner' src='assets/long-banner.png' />
 
           {
-            this.dynamicPages && this.dynamicPages.length > 0 ?
             this.dynamicPages.map( (page) => {
               {/* console.log("page", page); */}
               return <dls-button page={page} history={this.history}></dls-button>
             })
-            : ''
           }
 
           <p>This website is in no way affiliated, endorsed, or maybe even known by ESPN, The Dan Le Batard Show or anyone else of importance. Please don't sue me.</p>
