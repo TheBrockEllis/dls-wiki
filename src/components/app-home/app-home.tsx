@@ -89,6 +89,12 @@ export class AppHome {
   }
 
   render() {
+    let dynamicPagesJsx;
+    if (this.dynamicPages) {
+      dynamicPagesJsx = this.dynamicPages.map((page) => {
+        return <dls-button page={page} history={this.history}></dls-button>
+     })
+   }
 
     return (
       <ion-page color='primary'>
@@ -115,12 +121,7 @@ export class AppHome {
 
           <img id='long-banner' src='assets/long-banner.png' />
 
-          {
-            this.dynamicPages.map( (page) => {
-              {/* console.log("page", page); */}
-              return <dls-button page={page} history={this.history}></dls-button>
-            })
-          }
+          { dynamicPagesJsx }
 
           <p>This website is in no way affiliated, endorsed, or maybe even known by ESPN, The Dan Le Batard Show or anyone else of importance. Please don't sue me.</p>
 
