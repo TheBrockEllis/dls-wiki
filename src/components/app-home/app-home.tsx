@@ -32,7 +32,7 @@ export class AppHome {
     },
   ];
 
-  @State() dynamicPages: any[];
+  @State() dynamicPages: any[] = [];
 
   componentDidLoad(){
     // console.log(this.mixpanel);
