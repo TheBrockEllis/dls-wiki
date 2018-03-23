@@ -10,11 +10,10 @@ dls-soundboard {
   #audioFile {
     width: 100%;
     height: 50px;
+    line-height: 50px;
     background-color: var(--ion-color-ios-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: auto;
+    text-align: center;
     text-overflow: ellipsis;
     color: #FFF;
   }
