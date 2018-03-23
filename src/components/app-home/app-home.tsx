@@ -36,27 +36,26 @@ export class AppHome {
     mixpanel.init("d8de3b7825c0f49e324a6f164bb34793");
     mixpanel.track("Home");
 
-    if(this.isServer === false){
-      this.getPages();
-    }
-
+    this.getPages();
     this.setupAnimations();
   }
 
   getPages(){
-    fetch('https://admin.dlswiki.com/wp-json/wp/v2/pages?exclude=2')
-    .then(function(response) {
-      return response.json();
-    })
-    .then( (pages) => {
-      pages.map( (page) => {
-        page.title = page.title.rendered;
-        page.link = `/page/${page.slug}`;
-      });
+    if(this.isServer === false){
+      fetch('https://admin.dlswiki.com/wp-json/wp/v2/pages?exclude=2')
+      .then(function(response) {
+        return response.json();
+      })
+      .then( (pages) => {
+        pages.map( (page) => {
+          page.title = page.title.rendered;
+          page.link = `/page/${page.slug}`;
+        });
 
-      this.dynamicPages = pages;
-      // console.log("done fetchin' and mergin' pages", this.pages);
-    });
+        this.dynamicPages = pages;
+        // console.log("done fetchin' and mergin' pages", this.pages);
+      });
+    }
   }
 
   setupAnimations(){
@@ -99,7 +98,7 @@ export class AppHome {
 
           {
             this.staticPages.map( (page) => {
-              console.log("page", page);
+              {/* console.log("page", page); */}
               return <dls-button page={page} history={this.history}></dls-button>
             })
           }
@@ -108,7 +107,7 @@ export class AppHome {
 
           {
             this.dynamicPages.map( (page) => {
-              console.log("page", page);
+              {/* console.log("page", page); */}
               return <dls-button page={page} history={this.history}></dls-button>
             })
           }
