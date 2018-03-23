@@ -70,8 +70,7 @@ export class DLSSoundboard {
               this.sounds.map( (sound) => {
                 return (
                   <ion-col col-6 col-sm col-md-3 col-lg-3 col-xl-3 onClick={ () => { this.updateAudioTarget(sound.source_url) }}>
-                    <div id='audioFile'>
-                      {sound.title.rendered}
+                    <div id='audioFile' innerHTML={sound.title.rendered}>
                     </div>
                   </ion-col>
                 )
