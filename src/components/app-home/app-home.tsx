@@ -1,6 +1,6 @@
 import { Component, Prop, State } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
-import mixpanel from 'mixpanel-browser';
+// import mixpanel from 'mixpanel-browser';
 
 @Component({
   tag: 'app-home',
@@ -11,6 +11,8 @@ export class AppHome {
   @State() heads: any;
 
   @Prop({ context: 'isServer' }) private isServer: boolean;
+  @Prop({ context: 'mixpanel' }) private mixpanel: any;
+
   @Prop() history: RouterHistory;
   @State() availableAnimations: string[] = ['tada', 'bounce', 'pulse', 'rubberBand', 'shake', 'jello'];
 
@@ -33,8 +35,10 @@ export class AppHome {
   @State() dynamicPages: any[] = [];
 
   componentDidLoad(){
-    mixpanel.init("d8de3b7825c0f49e324a6f164bb34793");
-    mixpanel.track("Home");
+    // console.log(this.mixpanel);
+
+    this.mixpanel.init();
+    this.mixpanel.track("Home");
 
     this.getPages();
     this.setupAnimations();

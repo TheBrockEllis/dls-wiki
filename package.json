@@ -33,7 +33,7 @@
     "type": "git",
     "url": "git+https://github.com/ionic-team/stencil-app-starter.git"
   },
-  "author": "Ionic Team",
+  "author": "@TheBrockEllis",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ionic-team/stencil"

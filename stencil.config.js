@@ -5,6 +5,7 @@ exports.config = {
     swSrc: 'src/sw.js'
   },
   globalStyle: ['src/global/app.css'],
+  globalScript: 'src/global/index.ts',
   enableCache: false,
   plugins: [
     sass()
