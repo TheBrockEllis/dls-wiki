@@ -52,7 +52,7 @@ export class AppHome {
           page.link = `/page/${page.slug}`;
         });
 
-        this.dynamicPages = pages;
+        this.dynamicPages = [...this.dynamicPages, ...pages]
         // console.log("done fetchin' and mergin' pages", this.pages);
       });
     }
