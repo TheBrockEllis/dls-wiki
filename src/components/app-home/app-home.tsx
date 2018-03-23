@@ -32,34 +32,34 @@ export class AppHome {
     },
   ];
 
-  @State() dynamicPages: any[] = [];
+  @State() dynamicPages: any[];
 
   componentDidLoad(){
     // console.log(this.mixpanel);
+    console.log('Is server: ', this.isServer);
 
     this.mixpanel.init();
     this.mixpanel.track("Home");
 
-    this.getPages();
+    if(this.isServer === false) this.getPages();
     this.setupAnimations();
   }
 
   getPages(){
-    if(this.isServer === false){
-      fetch('https://admin.dlswiki.com/wp-json/wp/v2/pages?exclude=2')
+    fetch('https://admin.dlswiki.com/wp-json/wp/v2/pages?exclude=2')
       .then(function(response) {
         return response.json();
       })
       .then( (pages) => {
-        pages.map( (page) => {
+        this.dynamicPages = pages.map( (page) => {
           page.title = page.title.rendered;
           page.link = `/page/${page.slug}`;
+          return page;
         });
 
-        this.dynamicPages = [...this.dynamicPages, ...pages]
+        // this.dynamicPages = [...this.dynamicPages, ...pages]
         // console.log("done fetchin' and mergin' pages", this.pages);
       });
-    }
   }
 
   setupAnimations(){
@@ -110,10 +110,12 @@ export class AppHome {
           <img id='long-banner' src='assets/long-banner.png' />
 
           {
+            this.dynamicPages && this.dynamicPages.length > 0 ?
             this.dynamicPages.map( (page) => {
               {/* console.log("page", page); */}
               return <dls-button page={page} history={this.history}></dls-button>
             })
+            : ''
           }
 
           <p>This website is in no way affiliated, endorsed, or maybe even known by ESPN, The Dan Le Batard Show or anyone else of importance. Please don't sue me.</p>
