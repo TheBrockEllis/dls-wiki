@@ -1,5 +1,6 @@
 import { Component, Prop } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
+import mixpanel from 'mixpanel-browser';
 
 @Component({
   tag: 'dls-showlog',
@@ -10,6 +11,8 @@ export class DLSShowlog {
   @Prop() history: RouterHistory;
 
   componentDidLoad(){
+    mixpanel.init("d8de3b7825c0f49e324a6f164bb34793");
+    mixpanel.track('Showlog');
   }
 
   goBack(){

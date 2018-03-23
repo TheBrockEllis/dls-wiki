@@ -1,5 +1,6 @@
 import { Component, Prop, State } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
+import mixpanel from 'mixpanel-browser';
 
 @Component({
   tag: 'app-home',
@@ -32,6 +33,9 @@ export class AppHome {
   @State() dynamicPages: any[] = [];
 
   componentDidLoad(){
+    mixpanel.init("d8de3b7825c0f49e324a6f164bb34793");
+    mixpanel.track("Home");
+
     if(this.isServer === false){
       this.getPages();
     }
@@ -40,7 +44,7 @@ export class AppHome {
   }
 
   getPages(){
-    fetch('https://admin.dlswiki.com/wp-json/wp/v2/pages')
+    fetch('https://admin.dlswiki.com/wp-json/wp/v2/pages?exclude=2')
     .then(function(response) {
       return response.json();
     })

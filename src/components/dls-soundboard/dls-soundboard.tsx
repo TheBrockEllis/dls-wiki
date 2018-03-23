@@ -1,5 +1,6 @@
 import { Component, Prop, State } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
+import mixpanel from 'mixpanel-browser';
 
 @Component({
   tag: 'dls-soundboard',
@@ -19,6 +20,11 @@ export class DLSSoundboard {
     this.audio.addEventListener("canplaythrough", () => {
       this.audio.play();
     }, true);
+  }
+
+  componentDidLoad(){
+    mixpanel.init("d8de3b7825c0f49e324a6f164bb34793");
+    mixpanel.track(`Soundboard`);
   }
 
   getSounds(){
@@ -56,7 +62,7 @@ export class DLSSoundboard {
         </ion-header>
 
         <ion-content>
-          <h1>Thanks to person for the sounds!</h1>
+          <h1>Thanks to <a href='https://www.twitter.com/justinspas'>@justinspas</a> for the sounds!</h1>
 
           <ion-grid>
             <ion-row>

@@ -1,5 +1,6 @@
 import { Component, Prop, State } from '@stencil/core';
 import { MatchResults, RouterHistory } from '@stencil/router';
+import mixpanel from 'mixpanel-browser';
 
 @Component({
   tag: 'app-page',
@@ -14,6 +15,11 @@ export class AppPage {
 
   componentWillLoad(){
     this.getPage();
+  }
+
+  componentDidLoad(){
+    mixpanel.init("d8de3b7825c0f49e324a6f164bb34793");
+    mixpanel.track(`Page - ${this.history.location.state.id}`);
   }
 
   getPage(){
