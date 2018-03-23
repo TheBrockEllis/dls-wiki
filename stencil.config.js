@@ -7,7 +7,8 @@ exports.config = {
   globalStyle: ['src/global/app.css'],
   plugins: [
     sass()
-  ]
+  ],
+  preferBuiltins: true
 };
 
 exports.devServer = {

@@ -14,7 +14,11 @@ export class AppHome {
   @State() availableAnimations: string[] = ['tada', 'bounce', 'pulse', 'rubberBand', 'shake', 'jello'];
 
   /* We can load any 'static' pages here, before we load pages from Wordpress */
-  @State() pages: any[] = [
+  @State() staticPages: any[] = [
+    {
+      title: 'Soundboard',
+      link: '/soundboard'
+    },
     {
       title: 'Daily Show Log',
       link: '/showlog'
@@ -23,11 +27,9 @@ export class AppHome {
       title: 'Twitter Polls',
       link: '/twitter'
     },
-    {
-      title: 'Soundboard',
-      link: '/soundboard'
-    },
   ];
+
+  @State() dynamicPages: any[] = [];
 
   componentDidLoad(){
     if(this.isServer === false){
@@ -48,8 +50,8 @@ export class AppHome {
         page.link = `/page/${page.slug}`;
       });
 
-      this.pages = [...this.pages, ...pages];
-      console.log("done fetchin' and mergin' pages", this.pages);
+      this.dynamicPages = pages;
+      // console.log("done fetchin' and mergin' pages", this.pages);
     });
   }
 
@@ -92,7 +94,16 @@ export class AppHome {
           </div>
 
           {
-            this.pages.map( (page) => {
+            this.staticPages.map( (page) => {
+              console.log("page", page);
+              return <dls-button page={page} history={this.history}></dls-button>
+            })
+          }
+
+          <img id='long-banner' src='assets/long-banner.png' />
+
+          {
+            this.dynamicPages.map( (page) => {
               console.log("page", page);
               return <dls-button page={page} history={this.history}></dls-button>
             })

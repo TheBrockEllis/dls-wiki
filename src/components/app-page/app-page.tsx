@@ -12,7 +12,7 @@ export class AppPage {
 
   @State() page: any;
 
-  componentDidLoad(){
+  componentWillLoad(){
     this.getPage();
   }
 
@@ -35,7 +35,7 @@ export class AppPage {
     return (
       <ion-page>
         <ion-header>
-          <ion-toolbar color='dark'>
+          <ion-toolbar color='primary'>
             <ion-buttons>
               <ion-button icon-only onClick={this.goBack.bind(this)}>
                 Back

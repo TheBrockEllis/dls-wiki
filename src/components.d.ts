@@ -111,6 +111,36 @@ declare global {
 
 
 import {
+  DLSShowlog as DlsShowlog
+} from './components/dls-showlog/dls-showlog';
+
+declare global {
+  interface HTMLDlsShowlogElement extends DlsShowlog, HTMLStencilElement {
+  }
+  var HTMLDlsShowlogElement: {
+    prototype: HTMLDlsShowlogElement;
+    new (): HTMLDlsShowlogElement;
+  };
+  interface HTMLElementTagNameMap {
+    "dls-showlog": HTMLDlsShowlogElement;
+  }
+  interface ElementTagNameMap {
+    "dls-showlog": HTMLDlsShowlogElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "dls-showlog": JSXElements.DlsShowlogAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface DlsShowlogAttributes extends HTMLAttributes {
+      history?: RouterHistory;
+    }
+  }
+}
+
+
+import {
   DLSSoundboard as DlsSoundboard
 } from './components/dls-soundboard/dls-soundboard';
 

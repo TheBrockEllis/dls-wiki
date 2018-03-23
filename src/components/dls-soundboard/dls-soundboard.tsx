@@ -1,60 +1,50 @@
 import { Component, Prop, State } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
-import firebase from 'firebase';
 
 @Component({
   tag: 'dls-soundboard',
-  styleUrl: 'dls-soundboard.css'
+  styleUrl: 'dls-soundboard.scss'
 })
 export class DLSSoundboard {
 
   @Prop() history: RouterHistory;
-  @State() soundsRef:any;
+  @State() sounds:any = [];
+  @State() audioTarget:string = '';
 
-  componentDidLoad(){
-    // this.getSounds();
+  @State() audio:HTMLAudioElement = document.createElement('audio');
 
-    // Get a reference to the storage service, which is used to create references in your storage bucket
-    // var storage = firebase.storage();
-    // console.log('storage', storage);
+  componentWillLoad(){
+    this.getSounds();
 
-    // Create a storage reference from our storage service
-    console.log(firebase);
-    var storageRef = firebase.storage().ref();
-    console.log('storageRef', storageRef);
+    this.audio.addEventListener("canplaythrough", () => {
+      this.audio.play();
+    }, true);
   }
 
-  // getSounds(){
-  //   // Find a reference to only votes that are for the associated job
-  //   this.soundsRef = firebase.storage()
-  //   // Attach a listner for changes on this reference
-  //   this.votesRef.on('value', (snapshot) => {
-  //       // Listen For New Votes, Update Vote Count And Current Vote
-  //       console.log('Vote count changed', this.job.company);
-  //       let voteCount = 0;
-  //       snapshot.forEach( (vote): any => {
-  //           let voteValue = vote.val();
-  //           voteCount += voteValue.points;
-  //           // Could do some other stuff here
-  //       });
-  //       console.log('voteCount' , voteCount);
-  //
-  //       this.job.points = voteCount;
-  //       this.points = voteCount;
-  //    }, (err) => {
-  //        console.warn(err);
-  //   });
-  // }
+  getSounds(){
+    fetch(`https://admin.dlswiki.com/wp-json/wp/v2/media?media_type=audio&per_page=50`)
+    .then(function(response) {
+      return response.json();
+    })
+    .then( sounds => {
+      this.sounds = sounds;
+    });
+  }
 
   goBack(){
     this.history.goBack();
+  }
+
+  updateAudioTarget(url){
+    this.audio.setAttribute('src', url);
+    this.audio.load();
   }
 
   render() {
     return (
       <ion-page>
         <ion-header>
-          <ion-toolbar color='primary'>
+          <ion-toolbar color='secondary'>
             <ion-buttons>
               <ion-button icon-only onClick={this.goBack.bind(this)}>
                 Back
@@ -67,6 +57,23 @@ export class DLSSoundboard {
 
         <ion-content>
           <h1>Thanks to person for the sounds!</h1>
+
+          <ion-grid>
+            <ion-row>
+            {
+              this.sounds.map( (sound) => {
+                return (
+                  <ion-col col-6 col-sm col-md-3 col-lg-3 col-xl-3 onClick={ () => { this.updateAudioTarget(sound.source_url) }}>
+                    <div id='audioFile'>
+                      {sound.title.rendered}
+                    </div>
+                  </ion-col>
+                )
+              })
+            }
+            </ion-row>
+          </ion-grid>
+
         </ion-content>
       </ion-page>
     );

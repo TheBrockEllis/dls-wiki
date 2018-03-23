@@ -2,10 +2,10 @@ import { Component, Prop } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
 
 @Component({
-  tag: 'dls-twitter',
-  styleUrl: 'dls-twitter.scss'
+  tag: 'dls-showlog',
+  styleUrl: 'dls-showlog.scss'
 })
-export class DLSTwitter {
+export class DLSShowlog {
 
   @Prop() history: RouterHistory;
 
@@ -27,13 +27,13 @@ export class DLSTwitter {
               </ion-button>
             </ion-buttons>
 
-            <ion-title>@LebatardShow</ion-title>
+            <ion-title>Daily Show Log</ion-title>
           </ion-toolbar>
         </ion-header>
 
         <ion-content>
-          <h1>Guerillmo, put it on the polls!</h1>
-          <p>This page will eventually be where we embed all of the latest twitter polls and results. End goal would be to get push notifications sent to your phone every time a new poll is added to @LebatardShow</p>
+          <h1>Shockular!</h1>
+          <p>This eventually will be where we host all of the major plot lines that took place during a daily show.</p>
         </ion-content>
       </ion-page>
     );
