@@ -1,13 +1,14 @@
 {
-  "name": "@stencil/starter",
+  "name": "dls-wiki",
   "private": true,
   "version": "0.0.1",
-  "description": "Stencil App Starter",
+  "description": "Dan LeBatard Show Wiki",
   "files": [
     "dist/"
   ],
   "scripts": {
     "build": "stencil build --prerender",
+    "rawBuild": "stencil build",
     "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
     "devWithSW": "sd concurrent \"stencil build --dev --service-worker --watch\" \"stencil-dev-server\" ",
     "serve": "stencil-dev-server",
@@ -31,14 +32,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ionic-team/stencil-app-starter.git"
+    "url": "git+https://github.com/thebrockellis/DLS-wiki"
   },
   "author": "@TheBrockEllis",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ionic-team/stencil"
-  },
-  "homepage": "https://github.com/ionic-team/stencil",
+  "homepage": "https://dlswiki.com",
   "jest": {
     "transform": {
       "^.+\\.(js|ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"

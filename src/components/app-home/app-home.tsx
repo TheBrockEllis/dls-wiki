@@ -1,4 +1,4 @@
-import { Component, Prop, State } from '@stencil/core';
+import { Component, Element, Prop, State } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
 // import mixpanel from 'mixpanel-browser';
 
@@ -7,6 +7,8 @@ import { RouterHistory } from '@stencil/router';
   styleUrl: 'app-home.scss'
 })
 export class AppHome {
+
+  @Element() el: Element;
 
   @State() heads: any;
 
@@ -17,8 +19,8 @@ export class AppHome {
   @State() availableAnimations: string[] = ['tada', 'bounce', 'pulse', 'rubberBand', 'shake', 'jello'];
 
   /* We can load any 'static' pages here, before we load pages from Wordpress */
-  @State() dynamicPages: any[] = [];
-  @State() staticPages: any[] = [
+  @State() dynamicPages: any;
+  @State() staticPages: Array<any> = [
     {
       title: 'Soundboard',
       link: '/soundboard'
@@ -33,17 +35,20 @@ export class AppHome {
     },
   ];
 
-
-  componentDidLoad(){
-    console.log('Is server: ', this.isServer);
+  componentWillLoad(){
+    // console.log('Is server: ', this.isServer);
 
     this.mixpanel.init();
     this.mixpanel.track("Home");
 
-    if(this.isServer === false) {
+    if(!this.isServer) {
+      // console.log('not pre-rendered, getting pages');
       this.getPages();
     }
 
+  }
+
+  componentDidLoad(){
     this.setupAnimations();
   }
 
@@ -53,23 +58,24 @@ export class AppHome {
         return response.json();
       })
       .then( (pages) => {
-        pages = pages.map( (page) => {
+        var modifiedPages = pages.map( (page) => {
           page.title = page.title.rendered;
           page.link = `/page/${page.slug}`;
           return page;
         });
 
-        return pages;
+        return modifiedPages;
         // this.dynamicPages = [...this.dynamicPages, ...pages]
         // console.log("done fetchin' and mergin' pages", this.pages);
-      }).then( (pages) => {
-        this.dynamicPages = [...this.dynamicPages, ...pages]
-        console.log("done fetchin' and mergin' pages", this.dynamicPages);
+      }).then(pages => {
+        this.dynamicPages = pages;
+        // console.log("done fetchin' and mergin' pages", pages, this.dynamicPages);
+        // console.log('this', this);
       });
   }
 
   setupAnimations(){
-    this.heads = document.getElementsByClassName("floatingHead");
+    this.heads = this.el.getElementsByClassName("floatingHead");
     setInterval(this.toggleAnimations.bind(this), 5000)
   }
 
@@ -89,12 +95,6 @@ export class AppHome {
   }
 
   render() {
-    let dynamicPagesJsx;
-    if (this.dynamicPages) {
-      dynamicPagesJsx = this.dynamicPages.map((page) => {
-        return <dls-button page={page} history={this.history}></dls-button>
-     })
-   }
 
     return (
       <ion-page color='primary'>
@@ -114,14 +114,18 @@ export class AppHome {
 
           {
             this.staticPages.map( (page) => {
-              {/* console.log("page", page); */}
               return <dls-button page={page} history={this.history}></dls-button>
             })
           }
 
           <img id='long-banner' src='assets/long-banner.png' />
 
-          { dynamicPagesJsx }
+          {
+            !this.isServer && this.dynamicPages ?
+            this.dynamicPages.map((page) => {
+              return <dls-button page={page} history={this.history}></dls-button>
+            }) : undefined
+          }
 
           <p>This website is in no way affiliated, endorsed, or maybe even known by ESPN, The Dan Le Batard Show or anyone else of importance. Please don't sue me.</p>
 
