@@ -21,7 +21,8 @@
     "@ionic/core": "0.0.2-65",
     "@stencil/core": "0.6.1",
     "@stencil/router": "latest",
-    "mixpanel-browser": "^2.19.0"
+    "mixpanel-browser": "^2.19.0",
+    "react-vertical-timeline-component": "^2.0.5"
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",
