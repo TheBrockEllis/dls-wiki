@@ -8,6 +8,9 @@ import mixpanel from 'mixpanel-browser';
 })
 export class DLSSoundboard {
 
+  @Prop() navigator:any = navigator;
+  @State() hasShareApi:boolean = false;
+
   @Prop() history: RouterHistory;
   @State() sounds:any = [];
   @State() audioTarget:string = '';
@@ -16,6 +19,8 @@ export class DLSSoundboard {
 
   componentWillLoad(){
     this.getSounds();
+
+    if(typeof this.navigator.share !== undefined) this.hasShareApi = true;
 
     this.audio.addEventListener("canplaythrough", () => {
       this.audio.play();
@@ -28,7 +33,7 @@ export class DLSSoundboard {
   }
 
   getSounds(){
-    fetch(`https://admin.dlswiki.com/wp-json/wp/v2/media?media_type=audio&per_page=50`)
+    fetch(`https://admin.dlswiki.com/wp-json/wp/v2/media?media_type=audio&per_page=50&order=asc`)
     .then(function(response) {
       return response.json();
     })
@@ -46,13 +51,24 @@ export class DLSSoundboard {
     this.audio.load();
   }
 
+  shareFile(url){
+    alert('trying to share');
+    this.navigator.share({
+        title: 'Sounds yo',
+        text: 'Let it oooooze into your ears',
+        url: url,
+    })
+    .then( () => alert('Successful share'))
+    .catch(() => alert('Error sharing'))
+  }
+
   render() {
     return (
       <ion-page>
         <ion-header>
           <ion-toolbar color='secondary'>
             <ion-buttons>
-              <ion-button icon-only onClick={this.goBack.bind(this)}>
+              <ion-button onClick={this.goBack.bind(this)}>
                 Back
               </ion-button>
             </ion-buttons>
@@ -64,20 +80,27 @@ export class DLSSoundboard {
         <ion-content>
           <h1>Thanks to <a href='https://www.twitter.com/justinspas'>@justinspas</a> for the sounds!</h1>
 
-          <ion-grid>
-            <ion-row>
+          <ion-list no-margin>
             {
               this.sounds.map( (sound) => {
                 return (
-                  <ion-col col-6 col-sm col-md-3 col-lg-3 col-xl-3 onClick={ () => { this.updateAudioTarget(sound.source_url) }}>
-                    <div id='audioFile' innerHTML={sound.title.rendered}>
-                    </div>
-                  </ion-col>
+                  <ion-item onClick={ () => { this.updateAudioTarget(sound.source_url) }}>
+                    <h1 innerHTML={sound.title.rendered}></h1>
+
+                    {
+                      this.hasShareApi ?
+                        <i slot='end' class='fas fa-download' onClick={ () => { this.shareFile(sound.source_url) }}></i>
+                      :
+                        <a slot='end' href={sound.source_url} download={`${sound.slug}.${sound.media_details.dataformat}`}>
+                          <i class='fas fa-download'></i>
+                        </a>
+                    }
+
+                  </ion-item>
                 )
               })
             }
-            </ion-row>
-          </ion-grid>
+          </ion-list>
 
         </ion-content>
       </ion-page>

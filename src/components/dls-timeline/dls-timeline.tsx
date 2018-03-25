@@ -2,8 +2,8 @@ import { Component, Prop } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
 import mixpanel from 'mixpanel-browser';
 
-import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
-import 'react-vertical-timeline-component/style.min.css';
+//import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+//import 'react-vertical-timeline-component/style.min.css';
 
 @Component({
   tag: 'dls-timeline',

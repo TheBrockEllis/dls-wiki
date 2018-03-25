@@ -53,7 +53,7 @@ export class AppHome {
   }
 
   getPages(){
-    fetch('https://admin.dlswiki.com/wp-json/wp/v2/pages?exclude=2')
+    fetch('https://admin.dlswiki.com/wp-json/wp/v2/pages?exclude=2&orderby=menu_order&order=asc')
       .then(function(response) {
         return response.json();
       })

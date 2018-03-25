@@ -165,6 +165,37 @@ declare global {
   namespace JSXElements {
     export interface DlsSoundboardAttributes extends HTMLAttributes {
       history?: RouterHistory;
+      navigator?: any;
+    }
+  }
+}
+
+
+import {
+  DLSTimeline as DlsTimeline
+} from './components/dls-timeline/dls-timeline';
+
+declare global {
+  interface HTMLDlsTimelineElement extends DlsTimeline, HTMLStencilElement {
+  }
+  var HTMLDlsTimelineElement: {
+    prototype: HTMLDlsTimelineElement;
+    new (): HTMLDlsTimelineElement;
+  };
+  interface HTMLElementTagNameMap {
+    "dls-timeline": HTMLDlsTimelineElement;
+  }
+  interface ElementTagNameMap {
+    "dls-timeline": HTMLDlsTimelineElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "dls-timeline": JSXElements.DlsTimelineAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface DlsTimelineAttributes extends HTMLAttributes {
+      history?: RouterHistory;
     }
   }
 }

@@ -35,7 +35,7 @@ export class DLSTwitter {
         </ion-header>
 
         <ion-content>
-          <h1>Guerillmo, put it on the polls!</h1>
+          <h1>Guillermo, put it on the polls!</h1>
           <p>This page will eventually be where we embed all of the latest twitter polls and results. End goal would be to get push notifications sent to your phone every time a new poll is added to @LebatardShow</p>
         </ion-content>
       </ion-page>
