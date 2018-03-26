@@ -52,7 +52,7 @@ export class DLSSoundboard {
   }
 
   shareFile(url){
-    alert('trying to share');
+    // alert('trying to share');
     this.navigator.share({
         title: 'Sounds yo',
         text: 'Let it oooooze into your ears',
