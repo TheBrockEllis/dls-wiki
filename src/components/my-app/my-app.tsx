@@ -58,6 +58,9 @@ export class MyApp {
             <stencil-route url='/showlog' component='dls-showlog'>
             </stencil-route>
 
+            <stencil-route url='/timeline' component='dls-timeline'>
+            </stencil-route>
+
             <stencil-route url='/page/:slug' component='app-page'>
             </stencil-route>
           </stencil-router>

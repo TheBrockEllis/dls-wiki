@@ -33,6 +33,10 @@ export class AppHome {
       title: 'Twitter Polls',
       link: '/twitter'
     },
+    {
+      title: 'Show Timeline',
+      link: '/timeline'
+    },
   ];
 
   componentWillLoad(){
