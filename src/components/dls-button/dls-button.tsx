@@ -20,7 +20,7 @@ export class DLSButton {
 
   render() {
     return (
-      <div class='dls-button-box' innerHTML={this.page.title} onClick={this.handleClick.bind(this)}>
+      <div class={`dls-button-box ${this.page.comingSoon ? 'coming-soon' : ''}`} innerHTML={this.page.title} onClick={this.handleClick.bind(this)}>
       </div>
 
       // <ion-item tappable innerHTML={this.page.title} onClick={this.handleClick.bind(this)}>

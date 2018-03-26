@@ -23,19 +23,23 @@ export class AppHome {
   @State() staticPages: Array<any> = [
     {
       title: 'Soundboard',
-      link: '/soundboard'
+      link: '/soundboard',
+      comingSoon: false
     },
     {
       title: 'Daily Show Log',
-      link: '/showlog'
+      link: '/showlog',
+      comingSoon: true
     },
     {
       title: 'Twitter Polls',
-      link: '/twitter'
+      link: '/twitter',
+      comingSoon: true
     },
     {
       title: 'Show Timeline',
-      link: '/timeline'
+      link: '/timeline',
+      comingSoon: false
     },
   ];
 
