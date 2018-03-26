@@ -33,7 +33,7 @@ export class DLSSoundboard {
   }
 
   getSounds(){
-    fetch(`https://admin.dlswiki.com/wp-json/wp/v2/media?media_type=audio&per_page=100&order=asc`)
+    fetch(`https://admin.dlswiki.com/wp-json/wp/v2/media?media_type=audio&per_page=100&orderby=title&order=asc`)
     .then(function(response) {
       return response.json();
     })
