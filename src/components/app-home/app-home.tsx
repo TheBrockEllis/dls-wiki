@@ -135,6 +135,21 @@ export class AppHome {
             }) : undefined
           }
 
+          <div id='azaria'>
+            <h2>Miami Jewish Health Systems</h2>
+
+            <div>
+              <img id='duff' src='assets/duff_man.png' />
+              <p>Hank Azaria, most widely known for his voicework on the Simpsons and from his critically aclaimed show Brockmore (IFC), donated many hours to recording lines for 2018 March Sadness Tournament. In return, all he asked is that the show raise awareness for Miami Jewish Heath Systems, where his grandmother is located.</p>
+            </div>
+
+            <img id='mjhs' src='assets/mjhs.png' />
+            
+            <div id='cta'>
+              <a href='http://miamijewishhealthsystems.org '>Check Out MJHS Now</a>
+            </div>
+          </div>
+
           <p>This website is in no way affiliated, endorsed, or maybe even known by ESPN, The Dan Le Batard Show or anyone else of importance. Please don't sue me.</p>
 
         </ion-content>

@@ -3,7 +3,6 @@ app-home {
     padding: 15px;
     background-color: var(--ion-color-ios-primary) !important;
     background-image: url('/assets/pineapple-bg.png');
-    // background-blend-mode: luminosity;
   }
 
   img {
@@ -33,5 +32,38 @@ app-home {
 
   #long-banner {
     margin: 20px auto;
+  }
+
+  #azaria {
+    // background-color: var(--ion-color-ios-primary);
+    color: #fff;
+    padding: 10px;
+    border: 5px dashed var(--ion-color-ios-secondary);
+    font-size: 1.5em;
+    margin: 50px 0;
+    color: #666;
+
+    h2 {
+      font-family: 'suckgolf';
+      text-align: center;
+      color: #000;
+    }
+
+    img#duff {
+      float: left;
+      width: 100px;
+      height: auto;
+      margin: 10px 10px 10px 0;
+    }
+
+    img#mjhs {
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    #cta {
+      text-align: center;
+    }
   }
 }
