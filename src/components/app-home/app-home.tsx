@@ -11,6 +11,7 @@ export class AppHome {
   @Element() el: Element;
 
   @State() heads: any;
+  @State() adnan: any;
 
   @Prop({ context: 'isServer' }) private isServer: boolean;
   @Prop({ context: 'mixpanel' }) private mixpanel: any;
@@ -53,7 +54,6 @@ export class AppHome {
       // console.log('not pre-rendered, getting pages');
       this.getPages();
     }
-
   }
 
   componentDidLoad(){
@@ -84,7 +84,8 @@ export class AppHome {
 
   setupAnimations(){
     this.heads = this.el.getElementsByClassName("floatingHead");
-    setInterval(this.toggleAnimations.bind(this), 5000)
+    this.adnan = this.el.querySelector('#adnan');
+    setInterval(this.toggleAnimations.bind(this), 5000);
   }
 
   toggleAnimations(){
@@ -100,6 +101,9 @@ export class AppHome {
         head.classList.add(this.availableAnimations[Math.floor(Math.random() * this.availableAnimations.length)]);
       }
     }
+
+    //adnan peekaboo
+    this.adnan.classList.toggle('peekaboo');
   }
 
   render() {
@@ -144,13 +148,15 @@ export class AppHome {
             </div>
 
             <img id='mjhs' src='assets/mjhs.png' />
-            
+
             <div id='cta'>
               <a href='http://miamijewishhealthsystems.org '>Check Out MJHS Now</a>
             </div>
           </div>
 
           <p>This website is in no way affiliated, endorsed, or maybe even known by ESPN, The Dan Le Batard Show or anyone else of importance. Please don't sue me.</p>
+
+          <img id='adnan' src='assets/adnan.png' />
 
         </ion-content>
       </ion-page>

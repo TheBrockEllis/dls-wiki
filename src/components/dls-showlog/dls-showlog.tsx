@@ -1,6 +1,8 @@
 import { Component, Prop } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
 import mixpanel from 'mixpanel-browser';
+import RSSParser from 'rss-parser';
+// const RSSParser;
 
 @Component({
   tag: 'dls-showlog',
@@ -13,6 +15,19 @@ export class DLSShowlog {
   componentDidLoad(){
     mixpanel.init("d8de3b7825c0f49e324a6f164bb34793");
     mixpanel.track('Showlog');
+
+    let parser = new RSSParser();
+    console.log(parser);
+
+    fetch('https://crossorigin.me/https://www.espn.com/espnradio/feeds/rss/podcast.xml?id=9941853').then( (results) => {
+      return results.text();
+    }).then( xmlText => {
+      console.log(xmlText);
+      // parser.parseString(xmlText, function(err, result){
+      //   console.log(err);
+      //   console.log(result);
+      // });
+    });
   }
 
   goBack(){

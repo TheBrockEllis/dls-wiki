@@ -66,4 +66,19 @@ app-home {
       text-align: center;
     }
   }
+
+  #adnan {
+    display: block;
+    height: 200px;
+    position: absolute;
+    right: 0;
+    transform: translateY(0);
+    transition: transform 5s linear;
+    z-index: 1000;
+  }
+
+  #adnan.peekaboo {
+    transform: translateY(-200px);
+  }
+
 }

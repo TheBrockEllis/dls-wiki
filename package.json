@@ -9,7 +9,7 @@
   "scripts": {
     "build": "stencil build --prerender",
     "rawBuild": "stencil build",
-    "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
+    "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server --no-open\" ",
     "devWithSW": "sd concurrent \"stencil build --dev --service-worker --watch\" \"stencil-dev-server\" ",
     "serve": "stencil-dev-server",
     "start": "npm run dev",
@@ -21,7 +21,8 @@
     "@ionic/core": "0.0.2-65",
     "@stencil/core": "0.6.1",
     "@stencil/router": "latest",
-    "mixpanel-browser": "^2.19.0"
+    "mixpanel-browser": "^2.19.0",
+    "rss-parser": "^3.1.2"
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",
