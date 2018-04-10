@@ -30,7 +30,7 @@ export class AppHome {
     {
       title: 'Daily Show Log',
       link: '/showlog',
-      comingSoon: true
+      comingSoon: false
     },
     {
       title: 'Twitter Polls',

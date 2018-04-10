@@ -25,4 +25,5 @@ body {
 
 ion-scroll {
   padding: 15px;
+  height: 100vh;
 }

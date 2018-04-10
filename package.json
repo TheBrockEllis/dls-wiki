@@ -18,15 +18,15 @@
     "deploy": "firebase deploy"
   },
   "dependencies": {
-    "@ionic/core": "0.0.2-65",
-    "@stencil/core": "0.6.1",
+    "@ionic/core": "latest",
+    "@stencil/core": "latest",
     "@stencil/router": "latest",
     "mixpanel-browser": "^2.19.0",
-    "rss-parser": "^3.1.2"
+    "stencil": "0.0.5"
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",
-    "@stencil/sass": "0.0.2",
+    "@stencil/sass": "latest",
     "@stencil/utils": "latest",
     "@types/jest": "^21.1.1",
     "jest": "^21.2.1"
