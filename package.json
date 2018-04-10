@@ -15,13 +15,15 @@
     "start": "npm run dev",
     "test": "jest --no-cache",
     "test.watch": "jest --watch --no-cache",
-    "deploy": "firebase deploy"
+    "deploy": "firebase deploy",
+    "dominate": "npm run build && firebase deploy"
   },
   "dependencies": {
     "@ionic/core": "4.0.0-alpha.1",
     "@stencil/core": "^0.7.18",
     "@stencil/router": "latest",
-    "mixpanel-browser": "^2.19.0"
+    "mixpanel-browser": "^2.19.0",
+    "micromatch": "^3.1.10"
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",

@@ -58,12 +58,6 @@ export class AppHome {
 
   componentDidLoad(){
     this.setupAnimations();
-
-    this.el.addEventListener('touchmove', this.updateAdnan);
-  }
-
-  updateAdnan(event){
-    console.log(event);
   }
 
   getPages(){
@@ -153,7 +147,7 @@ export class AppHome {
 
             <div>
               <img id='duff' src='assets/duff_man.png' />
-              <p>Hank Azaria, most widely known for his voicework on the Simpsons and from his critically aclaimed show Brockmore (IFC), donated many hours to recording lines for 2018 March Sadness Tournament. In return, all he asked is that the show raise awareness for Miami Jewish Heath Systems...so go check it out and donate.</p>
+              <p>Hank Azaria, most widely known for his voicework on the Simpsons and from his critically aclaimed show Brockmire (IFC), donated many hours to recording lines for 2018 March Sadness Tournament. In return, all he asked is that the show raise awareness for Miami Jewish Heath Systems...so go check it out and donate.</p>
             </div>
 
             <img id='mjhs' src='assets/mjhs.png' />

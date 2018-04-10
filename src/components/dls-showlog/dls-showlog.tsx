@@ -14,18 +14,8 @@ export class DLSShowlog {
   @State() podcasts:any;
 
   constructor(){
-    if (this.isServer === false) {
-      fetch('https://crossorigin.me/https://www.espn.com/espnradio/feeds/rss/podcast.xml?id=9941853').then( (results) => {
-        return results.text();
-      }).then( xmlText => {
-        // console.log(xmlText);
-        var parser = new DOMParser();
-        var doc = parser.parseFromString(xmlText, "application/xml");
-        // console.log(doc);
-
-        this.podcasts = doc.querySelectorAll('item');
-        // console.log(typeof this.podcasts, this.podcasts);
-      });
+    if (!this.isServer) {
+      this.fetchLogs();
     }
   }
 
@@ -36,6 +26,20 @@ export class DLSShowlog {
 
   goBack(){
     this.history.goBack();
+  }
+
+  fetchLogs(){
+    fetch('https://crossorigin.me/https://www.espn.com/espnradio/feeds/rss/podcast.xml?id=9941853').then( (results) => {
+      return results.text();
+    }).then( xmlText => {
+      // console.log(xmlText);
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(xmlText, "application/xml");
+      // console.log(doc);
+
+      this.podcasts = doc.querySelectorAll('item');
+      // console.log(typeof this.podcasts, this.podcasts);
+    });
   }
 
   render() {

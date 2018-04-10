@@ -1,7 +1,7 @@
 import '@ionic/core';
 import '@stencil/core';
 import '@stencil/router'
-import { Component, Prop, Listen } from '@stencil/core';
+import { Component, Prop } from '@stencil/core';
 import { ToastController } from '@ionic/core';
 
 @Component({
@@ -25,48 +25,33 @@ export class MyApp {
       so that the new service worker can take over
       and serve the fresh content
     */
-    window.addEventListener('swUpdate', () => {
-      this.toastCtrl.create({
-        message: 'New version available',
-        showCloseButton: true,
-        closeButtonText: 'Reload'
-      }).then((toast) => {
-        toast.present();
-      });
-    })
   }
-
-  @Listen('body:ionToastWillDismiss')
-  reload() {
-    window.location.reload();
-  }
-
+  
   render() {
     return (
       <ion-app>
         <main>
 
-          <ion-router useHash={false}>
-            <ion-route url='/' component='app-home'>
-            </ion-route>
+          <stencil-router>
+            <stencil-route url='/' component='app-home' exact={true}>
+            </stencil-route>
 
-            <ion-route url='/twitter' component='dls-twitter'>
-            </ion-route>
+            <stencil-route url='/twitter' component='dls-twitter'>
+            </stencil-route>
 
-            <ion-route url='/soundboard' component='dls-soundboard'>
-            </ion-route>
+            <stencil-route url='/soundboard' component='dls-soundboard'>
+            </stencil-route>
 
-            <ion-route url='/showlog' component='dls-showlog'>
-            </ion-route>
+            <stencil-route url='/showlog' component='dls-showlog'>
+            </stencil-route>
 
-            <ion-route url='/timeline' component='dls-timeline'>
-            </ion-route>
+            <stencil-route url='/timeline' component='dls-timeline'>
+            </stencil-route>
 
-            <ion-route url='/page/:slug' component='app-page'>
-            </ion-route>
+            <stencil-route url='/page/:slug' component='app-page'>
+            </stencil-route>
 
-            <ion-nav></ion-nav>
-          </ion-router>
+          </stencil-router>
 
         </main>
       </ion-app>
