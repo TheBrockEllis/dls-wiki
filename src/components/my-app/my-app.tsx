@@ -45,25 +45,29 @@ export class MyApp {
     return (
       <ion-app>
         <main>
-          <stencil-router>
-            <stencil-route url='/' component='app-home' exact={true}>
-            </stencil-route>
 
-            <stencil-route url='/twitter' component='dls-twitter'>
-            </stencil-route>
+          <ion-router useHash={false}>
+            <ion-route url='/' component='app-home'>
+            </ion-route>
 
-            <stencil-route url='/soundboard' component='dls-soundboard'>
-            </stencil-route>
+            <ion-route url='/twitter' component='dls-twitter'>
+            </ion-route>
 
-            <stencil-route url='/showlog' component='dls-showlog'>
-            </stencil-route>
+            <ion-route url='/soundboard' component='dls-soundboard'>
+            </ion-route>
 
-            <stencil-route url='/timeline' component='dls-timeline'>
-            </stencil-route>
+            <ion-route url='/showlog' component='dls-showlog'>
+            </ion-route>
 
-            <stencil-route url='/page/:slug' component='app-page'>
-            </stencil-route>
-          </stencil-router>
+            <ion-route url='/timeline' component='dls-timeline'>
+            </ion-route>
+
+            <ion-route url='/page/:slug' component='app-page'>
+            </ion-route>
+
+            <ion-nav></ion-nav>
+          </ion-router>
+
         </main>
       </ion-app>
     );

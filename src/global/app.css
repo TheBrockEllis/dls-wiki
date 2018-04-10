@@ -25,5 +25,7 @@ body {
 
 ion-scroll {
   padding: 15px;
-  height: 100vh;
+  /* TODO this shouldn't have to be here...something is not right...*/
+  /* The ion-scroll that is injected into ion-content is never getting a height set */
+  height: 95vh;
 }

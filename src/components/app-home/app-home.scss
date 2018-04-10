@@ -1,9 +1,11 @@
 app-home {
+  ion-page {
+    position: relative;
+  }
+
   ion-scroll {
-    padding: 15px;
     background-color: var(--ion-color-ios-primary) !important;
     background-image: url('/assets/pineapple-bg.png');
-    height: 100vh;
   }
 
   img {
@@ -71,15 +73,16 @@ app-home {
   #adnan {
     display: block;
     height: 200px;
-    position: absolute;
+    position: relative;
     right: 0;
-    transform: translateY(0);
+    // bottom: -200px;
+    transform: translateY(100vh);
     transition: transform 5s linear;
     z-index: 1000;
   }
 
   #adnan.peekaboo {
-    transform: translateY(-200px);
+    transform: translateY( calc(100vh - 200px) );
   }
 
 }

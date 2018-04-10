@@ -58,6 +58,12 @@ export class AppHome {
 
   componentDidLoad(){
     this.setupAnimations();
+
+    this.el.addEventListener('touchmove', this.updateAdnan);
+  }
+
+  updateAdnan(event){
+    console.log(event);
   }
 
   getPages(){
@@ -86,6 +92,7 @@ export class AppHome {
     this.heads = this.el.getElementsByClassName("floatingHead");
     this.adnan = this.el.querySelector('#adnan');
     setInterval(this.toggleAnimations.bind(this), 5000);
+    setInterval(this.toggleAdnan.bind(this), 10000);
   }
 
   toggleAnimations(){
@@ -101,7 +108,9 @@ export class AppHome {
         head.classList.add(this.availableAnimations[Math.floor(Math.random() * this.availableAnimations.length)]);
       }
     }
+  }
 
+  toggleAdnan(){
     //adnan peekaboo
     this.adnan.classList.toggle('peekaboo');
   }
@@ -109,7 +118,7 @@ export class AppHome {
   render() {
 
     return (
-      <ion-page color='primary'>
+      <ion-page>
         <ion-header>
           <ion-toolbar color='secondary'>
             <img src='assets/show-logo.png' />
@@ -144,7 +153,7 @@ export class AppHome {
 
             <div>
               <img id='duff' src='assets/duff_man.png' />
-              <p>Hank Azaria, most widely known for his voicework on the Simpsons and from his critically aclaimed show Brockmore (IFC), donated many hours to recording lines for 2018 March Sadness Tournament. In return, all he asked is that the show raise awareness for Miami Jewish Heath Systems, where his grandmother is located.</p>
+              <p>Hank Azaria, most widely known for his voicework on the Simpsons and from his critically aclaimed show Brockmore (IFC), donated many hours to recording lines for 2018 March Sadness Tournament. In return, all he asked is that the show raise awareness for Miami Jewish Heath Systems...so go check it out and donate.</p>
             </div>
 
             <img id='mjhs' src='assets/mjhs.png' />
@@ -156,9 +165,10 @@ export class AppHome {
 
           <p>This website is in no way affiliated, endorsed, or maybe even known by ESPN, The Dan Le Batard Show or anyone else of importance. Please don't sue me.</p>
 
-          <img id='adnan' src='assets/adnan.png' />
-
         </ion-content>
+
+        <img id='adnan' src='assets/adnan.png' />
+
       </ion-page>
     );
   }
