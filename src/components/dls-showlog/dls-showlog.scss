@@ -7,4 +7,19 @@ dls-showlog {
     font-family: 'suckgolf';
     font-size: 2em;
   }
+
+  .card-header-ios {
+    margin: 5px 0 5px 0;
+    padding-bottom: 0;
+  }
+
+  .card-content-ios {
+    padding-top: 0;
+  }
+
+  .card-ios h2 {
+      margin: 15px 0px 5px 0px !important;
+      font-weight: bold !important;
+  }
+
 }

@@ -29,7 +29,7 @@ export class DLSShowlog {
   }
 
   fetchLogs(){
-    fetch('https://crossorigin.me/https://www.espn.com/espnradio/feeds/rss/podcast.xml?id=9941853').then( (results) => {
+    fetch('https://cors-anywhere.herokuapp.com/https://www.espn.com/espnradio/feeds/rss/podcast.xml?id=9941853').then( (results) => {
       return results.text();
     }).then( xmlText => {
       // console.log(xmlText);

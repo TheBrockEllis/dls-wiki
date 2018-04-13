@@ -23,9 +23,15 @@ export class DLSPostcast {
   render() {
     let markup :string = '';
 
-    [].forEach.call(this.podcasts, function(podcast) {
-      markup += `<h2 class='title'>${podcast.querySelector('title').textContent}</h2>`;
-      markup += `<p class='description'>${podcast.querySelector('description').textContent}</p>`;
+    [].forEach.call(this.podcasts, (podcast) => {
+      let link = podcast.querySelector('enclosure').getAttribute('url');
+      markup += `
+        <h2 class='title'>${podcast.querySelector('title').textContent}</h2>
+        <p class='description'>
+          ${podcast.querySelector('description').textContent}
+          <a href='${link}'>[Listen]</a>
+        </p>
+      `;
     });
 
     return (
