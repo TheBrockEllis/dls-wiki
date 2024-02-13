@@ -1,3 +1,6 @@
+
+<img width="341" alt="Screenshot 2024-02-13 at 11 37 07 AM" src="https://github.com/TheBrockEllis/dls-wiki/assets/1606194/01ba692f-f241-406f-b393-39041e4e1bd7">
+
 # Ionic PWA Toolkit Beta
 
 The Ionic PWA Toolkit is the recommended way to build production ready Progressive Web Apps (PWAs) with Ionic. This toolkit gets you started with [Stencil](https://stenciljs.com/) and an early release of Ionic (4.x+). This combination of tools gives you the ability to build a fast, efficient PWA with zero config needed and best practices out of the box.
